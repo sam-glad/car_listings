@@ -17,5 +17,6 @@ feature 'user views the manufacturers index page', %Q(
       expect(page).to have_content(manufacturer.name)
       expect(page).to have_content(manufacturer.country)
     end
+    expect(Manufacturer.count).to eq(5)
   end
 end
