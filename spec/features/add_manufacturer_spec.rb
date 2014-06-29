@@ -9,6 +9,7 @@ feature 'user adds a new manufacturer', %Q(
   scenario 'user successfully adds a new manufacturer' do
     manufacturer = FactoryGirl.create(:manufacturer)
     error_notice = 'Oops! Check your error messages below.'
+    error_msg = 'can\'t be blank'
 
     visit new_manufacturer_path
     fill_in 'Name', with: manufacturer.name
@@ -25,7 +26,7 @@ feature 'user adds a new manufacturer', %Q(
     manufacturer = FactoryGirl.build(:manufacturer)
 
     error_notice = 'Oops! Check your error messages below.'
-    error_msg = 'Name cannot be blank'
+    error_msg = 'Name can\'t be blank'
 
     visit new_manufacturer_path
     fill_in 'Name', with: ''
@@ -43,7 +44,7 @@ feature 'user adds a new manufacturer', %Q(
     manufacturer = FactoryGirl.build(:manufacturer)
 
     error_notice = 'Oops! Check your error messages below.'
-    error_msg = 'Country cannot be blank'
+    error_msg = 'Country can\'t be blank'
 
     visit new_manufacturer_path
     fill_in 'Name', with: manufacturer.name
