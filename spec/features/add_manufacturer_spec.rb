@@ -7,7 +7,7 @@ feature 'user adds a new manufacturer', %Q(
 ) do
 
   scenario 'user successfully adds a new manufacturer' do
-    manufacturer = FactoryGirl.create(:manufacturer)
+    manufacturer = FactoryGirl.build(:manufacturer)
     error_notice = 'Oops! Check your error messages below.'
     error_msg = 'can\'t be blank'
 
@@ -20,6 +20,7 @@ feature 'user adds a new manufacturer', %Q(
     expect(page).to have_content(manufacturer.country)
     expect(page).to_not have_content(error_msg)
     expect(page).to_not have_content(error_notice)
+    expect(Manufacturer.count).to eq(1)
   end
 
   scenario 'user fails to enter a name' do
@@ -38,6 +39,7 @@ feature 'user adds a new manufacturer', %Q(
 
     visit manufacturers_path
     expect(page).to_not have_content(manufacturer.country)
+    expect(Manufacturer.count).to eq(0)
   end
 
   scenario 'user fails to enter a country' do
@@ -56,5 +58,6 @@ feature 'user adds a new manufacturer', %Q(
 
     visit manufacturers_path
     expect(page).to_not have_content(manufacturer.name)
+    expect(Manufacturer.count).to eq(0)
   end
 end
