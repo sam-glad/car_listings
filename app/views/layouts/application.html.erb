@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<%= yield %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
+
+  <%= link_to 'New Car', new_car_path %> ||
+  <%= link_to 'All Cars', cars_path %> ||
+  <%= link_to 'New Manufacturer', new_manufacturer_path %> ||
+  <%= link_to 'All Manufacturers', manufacturers_path %>
 
 </body>
 </html>

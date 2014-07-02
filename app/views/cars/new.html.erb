@@ -1,0 +1,35 @@
+<h2>New Car</h2>
+
+<%= form_for [@manufacturer, @car] do |f| %>
+  <% if @car.errors.any? %>
+    <ul>
+      <% @car.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  Make:
+  <% @manufacturers.each do |manu| %>
+    <%= f.label :manufacturer, manu.name, value: manu.id %>
+    <%= f.radio_button :manufacturer_id, manu.id %>
+  <% end %>
+  <br>
+  <span style="padding-left:54px"></span>
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+  <br>
+  <span style="padding-left:35px"></span>
+  <%= f.label :mileage %>
+  <%= f.text_field :mileage %>
+  <br>
+  <span style="padding-left:50px"></span>
+  <%= f.label :color %>
+  <%= f.text_field :color %>
+  <br>
+  <span style="padding-left:13px"></span>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.submit 'Submit' %>
+<% end %>
